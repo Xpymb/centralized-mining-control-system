@@ -19,7 +19,7 @@ public static class Registration
     public static void AddServices(this IServiceCollection services)
     {
         services.AddScoped<INodeService, NodeService>();
-        services.AddScoped<IManagerService, ManagerService>();
+        services.AddScoped<IMinerTaskService, MinerTaskService>();
     }
 
     public static void AddJobs(this IServiceCollection services)

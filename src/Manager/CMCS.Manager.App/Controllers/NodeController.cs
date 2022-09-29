@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CMCS.Manager.App.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class NodeController : ControllerBase
 {
     private readonly INodeService _nodeService;

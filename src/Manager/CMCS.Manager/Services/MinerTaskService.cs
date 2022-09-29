@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CMCS.Manager.Services;
 
-public class ManagerService : IManagerService
+public class MinerTaskService : IMinerTaskService
 {
     private readonly ManagerDbContext _dbContext;
     private readonly IMapper _mapper;
 
-    public ManagerService(
+    public MinerTaskService(
         ManagerDbContext dbContext,
         IMapper mapper)
     {
@@ -20,7 +20,7 @@ public class ManagerService : IManagerService
         _mapper = mapper;
     }
     
-    public async Task<MinerTask> GetMinerTask(GetMinerTaskCommand command, CancellationToken token)
+    public async Task<MinerTask> Get(GetMinerTaskCommand command, CancellationToken token)
     {
         var row = await _dbContext.MinerTasks
             .AsNoTracking()
@@ -35,7 +35,7 @@ public class ManagerService : IManagerService
         return _mapper.Map<MinerTask>(row);
     }
 
-    public async Task<MinerTask> UpdateMinerTask(UpdateMinerTaskCommand command, CancellationToken token)
+    public async Task<MinerTask> Update(UpdateMinerTaskCommand command, CancellationToken token)
     {
         var row = await _dbContext.MinerTasks
             .SingleOrDefaultAsync(r => r.Id == command.Id, token)

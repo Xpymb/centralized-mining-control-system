@@ -7,25 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 namespace CMCS.Manager.App.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class ManagerController : ControllerBase
+[Route("api/[controller]")]
+public class MinerTaskController : ControllerBase
 {
-    private readonly IManagerService _managerService;
+    private readonly IMinerTaskService _minerTaskService;
 
-    public ManagerController(IManagerService managerService)
+    public MinerTaskController(IMinerTaskService minerTaskService)
     {
-        _managerService = managerService;
+        _minerTaskService = minerTaskService;
     }
 
     [HttpGet("[action]")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<MinerTask>> GetMinerTask(
+    public async Task<ActionResult<MinerTask>> Get(
         [FromQuery] GetMinerTaskCommand command,
         CancellationToken token = default)
     {
-        var result = await _managerService
-            .GetMinerTask(command, token)
+        var result = await _minerTaskService
+            .Get(command, token)
             .WithActionResult()
             .ConfigureAwait(false);
 
@@ -35,12 +35,12 @@ public class ManagerController : ControllerBase
     [HttpPost("[action]")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<MinerTask>> UpdateMinerTask(
+    public async Task<ActionResult<MinerTask>> Update(
         [FromQuery] UpdateMinerTaskCommand command,
         CancellationToken token = default)
     {
-        var result = await _managerService
-            .UpdateMinerTask(command, token)
+        var result = await _minerTaskService
+            .Update(command, token)
             .WithActionResult()
             .ConfigureAwait(false);
 
