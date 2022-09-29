@@ -8,23 +8,18 @@ public class MinerTaskRow
     public string CryptoCoin { get; set; }
     public string Algorithm { get; set; }
     public DateTimeOffset CreatedDate { get; }
-    public DateTimeOffset LastUpdateDate { get; set; }
 
     public MinerTaskRow(
-        Guid id,
         string config,
         string miner,
         string cryptoCoin,
-        string algorithm,
-        DateTimeOffset createdDate,
-        DateTimeOffset lastUpdateDate)
+        string algorithm)
     {
-        Id = id;
+        Id = Guid.NewGuid();
         Config = config;
         Miner = miner;
         CryptoCoin = cryptoCoin;
         Algorithm = algorithm;
-        CreatedDate = createdDate;
-        LastUpdateDate = lastUpdateDate;
+        CreatedDate = DateTimeOffset.UtcNow;
     }
 }

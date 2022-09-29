@@ -12,14 +12,13 @@ public class NodeRow
     public DateTimeOffset LastUpdateDate { get; set; }
 
     public NodeRow(
-        Guid id,
         string name,
         string miningStatus,
         string currentMiner,
         decimal currentHashrate,
         decimal currentTemperature)
     {
-        Id = id;
+        Id = Guid.NewGuid();
         Name = name;
         MiningStatus = miningStatus;
         CurrentMiner = currentMiner;

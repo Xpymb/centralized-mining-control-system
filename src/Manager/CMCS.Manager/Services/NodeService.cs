@@ -41,6 +41,7 @@ public class NodeService : INodeService
     public async Task<IEnumerable<Node>> GetAll(CancellationToken token)
     {
         var rows = await _dbContext.Nodes
+            .AsNoTracking()
             .ToListAsync(token)
             .ConfigureAwait(false);
 
@@ -50,7 +51,6 @@ public class NodeService : INodeService
     public async Task<Node> Create(CreateNodeCommand command, CancellationToken token)
     {
         var row = new NodeRow(
-            Guid.NewGuid(),
             command.Name,
             MiningStatus.Stopped.ToString(),
             MinerType.None.ToString(),

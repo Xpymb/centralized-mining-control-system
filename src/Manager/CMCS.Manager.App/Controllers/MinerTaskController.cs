@@ -1,6 +1,6 @@
 using CMCS.Manager.Contract;
-using CMCS.Manager.Contract.Models.Commands.Manager;
-using CMCS.Manager.Contract.Models.Manager;
+using CMCS.Manager.Contract.Models.Commands.MinerTask;
+using CMCS.Manager.Contract.Models.MinerTask;
 using CMCS.Shared.Extensions.Api;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +17,7 @@ public class MinerTaskController : ControllerBase
         _minerTaskService = minerTaskService;
     }
 
-    [HttpGet("[action]")]
+    [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<MinerTask>> Get(
@@ -32,15 +32,28 @@ public class MinerTaskController : ControllerBase
         return result;
     }
     
-    [HttpPost("[action]")]
+    [HttpGet("[action]")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<MinerTask>> Update(
-        [FromBody] UpdateMinerTaskCommand command,
+    public async Task<ActionResult<IEnumerable<MinerTask>>> GetAll(
         CancellationToken token = default)
     {
         var result = await _minerTaskService
-            .Update(command, token)
+            .GetAll(token)
+            .WithActionResult()
+            .ConfigureAwait(false);
+
+        return result;
+    }
+    
+    [HttpGet("[action]")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<MinerTask>> GetCurrent(
+        CancellationToken token = default)
+    {
+        var result = await _minerTaskService
+            .GetCurrent(token)
             .WithActionResult()
             .ConfigureAwait(false);
 
