@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Extensions\CMCS.Shared.Exceptions\CMCS.Shared.Exceptions.csproj" />
       <ProjectReference Include="..\CMCS.Shared.Exceptions\CMCS.Shared.Exceptions.csproj" />
     </ItemGroup>
 

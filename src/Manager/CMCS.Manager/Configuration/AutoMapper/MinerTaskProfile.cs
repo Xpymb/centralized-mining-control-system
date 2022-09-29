@@ -3,6 +3,7 @@ using CMCS.Manager.Context.Entities;
 using CMCS.Manager.Contract.Models;
 using CMCS.Manager.Contract.Models.Manager;
 using CMCS.Shared.Extensions.EnumExtensions;
+using CMCS.Shared.Models;
 
 namespace CMCS.Manager.Configuration.AutoMapper;
 

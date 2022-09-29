@@ -1,3 +1,5 @@
+using CMCS.Shared.Models;
+
 namespace CMCS.Manager.Contract.Models.Nodes;
 
 public record Node(

@@ -1,4 +1,4 @@
-namespace CMCS.Manager.Contract.Models;
+namespace CMCS.Shared.Models;
 
 public enum MinerType
 {
