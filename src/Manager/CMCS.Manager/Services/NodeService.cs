@@ -38,6 +38,15 @@ public class NodeService : INodeService
         return _mapper.Map<Node>(row);
     }
 
+    public async Task<IEnumerable<Node>> GetAll(CancellationToken token)
+    {
+        var rows = await _dbContext.Nodes
+            .ToListAsync(token)
+            .ConfigureAwait(false);
+
+        return _mapper.Map<List<Node>>(rows);
+    }
+
     public async Task<Node> Create(CreateNodeCommand command, CancellationToken token)
     {
         var row = new NodeRow(
@@ -46,8 +55,7 @@ public class NodeService : INodeService
             MiningStatus.Stopped.ToString(),
             MinerType.None.ToString(),
             decimal.Zero, 
-            decimal.Zero,
-            DateTimeOffset.Now);
+            decimal.Zero);
 
         await _dbContext.Nodes
             .AddAsync(row, token)
@@ -75,7 +83,7 @@ public class NodeService : INodeService
         row.CurrentMiner = command.CurrentMiner.ToString() ?? row.CurrentMiner;
         row.CurrentHashrate = command.CurrentHashrate;
         row.CurrentTemperature = command.CurrentTemperature;
-        row.LastUpdateDate = DateTimeOffset.Now;
+        row.LastUpdateDate = DateTimeOffset.UtcNow;
 
         await _dbContext
             .SaveChangesAsync(token)
@@ -96,5 +104,8 @@ public class NodeService : INodeService
         }
         
         _dbContext.Nodes.Remove(row);
+
+        await _dbContext.SaveChangesAsync(token)
+            .ConfigureAwait(false);
     }
 }

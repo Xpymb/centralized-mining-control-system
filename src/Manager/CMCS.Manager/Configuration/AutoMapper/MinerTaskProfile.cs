@@ -12,13 +12,16 @@ public class MinerTaskProfile : Profile
     public MinerTaskProfile()
     {
         CreateMap<MinerTaskRow, MinerTask>()
-            .ForMember(
-                dest => dest.MinerConfig,
-                opt => opt.MapFrom(src => 
+            .ConstructUsing(
+                src =>
+                    new MinerTask(
+                        src.Id, 
                         new MinerConfig(
                             src.Config, 
                             src.Miner.ToEnum<MinerType>(), 
                             src.CryptoCoin.ToEnum<CryptoCoinType>(), 
-                            src.Algorithm.ToEnum<AlgorithmType>())));
+                            src.Algorithm.ToEnum<AlgorithmType>()),
+                        src.CreatedDate, 
+                        src.LastUpdateDate));
     }
 }

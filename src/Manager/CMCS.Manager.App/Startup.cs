@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using AutoMapper;
+using CMCS.Manager.Configuration.AutoMapper;
 using NJsonSchema.Generation;
 
 namespace CMCS.Manager.App;
@@ -17,8 +19,8 @@ public class Startup
         services.AddManagerDb(Configuration);
         services.AddServices();
         services.AddJobs();
-        
-        services.AddAutoMapper(typeof(Startup).Assembly);
+
+        services.AddAutoMapper();
         
         services
             .AddControllers()

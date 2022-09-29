@@ -17,7 +17,7 @@ public class NodeController : ControllerBase
         _nodeService = nodeService;
     }
     
-    [HttpGet("[action]")]
+    [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Node>> Get(
@@ -26,6 +26,20 @@ public class NodeController : ControllerBase
     {
         var result = await _nodeService
             .Get(command, token)
+            .WithActionResult()
+            .ConfigureAwait(false);
+
+        return result;
+    }
+    
+    [HttpGet("GetAll")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IEnumerable<Node>>> GetAll(
+        CancellationToken token = default)
+    {
+        var result = await _nodeService
+            .GetAll(token)
             .WithActionResult()
             .ConfigureAwait(false);
 
