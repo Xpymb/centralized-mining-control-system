@@ -36,7 +36,7 @@ public class NodeController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Node>> Create(
-        [FromQuery] CreateNodeCommand command,
+        [FromBody] CreateNodeCommand command,
         CancellationToken token = default)
     {
         var result = await _nodeService
@@ -51,7 +51,7 @@ public class NodeController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Node>> Update(
-        [FromQuery] UpdateNodeCommand command,
+        [FromBody] UpdateNodeCommand command,
         CancellationToken token = default)
     {
         var result = await _nodeService
@@ -65,7 +65,7 @@ public class NodeController : ControllerBase
     [HttpDelete]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<Node>> Delete(
+    public async Task<ActionResult> Delete(
         [FromQuery] DeleteNodeCommand command,
         CancellationToken token = default)
     {
