@@ -17,8 +17,7 @@ public class NodeRow
         string miningStatus,
         string currentMiner,
         decimal currentHashrate,
-        decimal currentTemperature,
-        DateTimeOffset lastUpdateDate)
+        decimal currentTemperature)
     {
         Id = id;
         Name = name;
@@ -26,7 +25,7 @@ public class NodeRow
         CurrentMiner = currentMiner;
         CurrentHashrate = currentHashrate;
         CurrentTemperature = currentTemperature;
-        CreatedDate = DateTimeOffset.Now;
-        LastUpdateDate = lastUpdateDate;
+        CreatedDate = DateTimeOffset.UtcNow;
+        LastUpdateDate = DateTimeOffset.UtcNow;
     }
 }

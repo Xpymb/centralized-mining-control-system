@@ -9,7 +9,12 @@ public partial class NodeServiceClient : INodeService
         return await GetAsync(command.Id, token)
             .ConfigureAwait(false);
     }
-    
+
+    public Task<IEnumerable<Node>> GetAll(CancellationToken token)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<Node> Create(CreateNodeCommand command, CancellationToken token)
     {
         return await CreateAsync(command, token)

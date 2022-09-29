@@ -50,7 +50,7 @@ public class MinerTaskService : IMinerTaskService
         row.Miner = command.MinerConfig.Miner.ToString();
         row.CryptoCoin = command.MinerConfig.CryptoCoin.ToString();
         row.Algorithm = command.MinerConfig.Algorithm.ToString();
-        row.LastUpdateDate = DateTimeOffset.Now;
+        row.LastUpdateDate = DateTimeOffset.UtcNow;
 
         await _dbContext
             .SaveChangesAsync(token)

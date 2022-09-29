@@ -1,3 +1,5 @@
+using AutoMapper;
+using CMCS.Manager.Configuration.AutoMapper;
 using CMCS.Manager.Context;
 using CMCS.Manager.Contract;
 using CMCS.Manager.Services;
@@ -25,5 +27,17 @@ public static class Registration
     public static void AddJobs(this IServiceCollection services)
     {
         
+    }
+
+    public static void AddAutoMapper(this IServiceCollection services)
+    {
+        var mapperConfig = new MapperConfiguration(mc =>
+        {
+            mc.AddProfile(new NodesProfile());
+            mc.AddProfile(new MinerTaskProfile());
+        });
+        
+        var mapper = mapperConfig.CreateMapper();
+        services.AddSingleton(mapper);
     }
 }
