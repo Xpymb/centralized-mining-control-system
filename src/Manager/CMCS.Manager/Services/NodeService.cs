@@ -5,7 +5,7 @@ using CMCS.Manager.Contract;
 using CMCS.Manager.Contract.Models;
 using CMCS.Manager.Contract.Models.Commands.Nodes;
 using CMCS.Manager.Contract.Models.Nodes;
-using CMCS.Shared.Models;
+using CMCS.Shared.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CMCS.Manager.Services;
