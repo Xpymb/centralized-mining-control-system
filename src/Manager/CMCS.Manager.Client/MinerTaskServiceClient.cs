@@ -1,4 +1,6 @@
 using CMCS.Manager.Contract;
+using CMCS.Manager.Contract.Models.Commands.MinerTask;
+using CMCS.Manager.Contract.Models.MinerTask;
 
 namespace CMCS.Manager.Client;
 
@@ -9,10 +11,21 @@ public partial class MinerTaskServiceClient : IMinerTaskService
         return await GetAsync(command.Id, token)
             .ConfigureAwait(false);
     }
-    
-    public async Task<MinerTask> Update(UpdateMinerTaskCommand command, CancellationToken token)
+
+    public async Task<IEnumerable<MinerTask>> GetAll(CancellationToken token)
     {
-        return await UpdateAsync(command, token)
+        return await GetAllAsync(token)
             .ConfigureAwait(false);
+    }
+
+    public async Task<MinerTask> GetCurrent(CancellationToken token)
+    {
+        return await GetCurrentAsync(token)
+            .ConfigureAwait(false);
+    }
+
+    public Task<MinerTask> Create(CreateMinerTaskCommand command, CancellationToken token)
+    {
+        throw new NotImplementedException();
     }
 }

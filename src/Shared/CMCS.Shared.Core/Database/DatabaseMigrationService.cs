@@ -14,15 +14,15 @@ public class DatabaseMigrationService<TContext> : IDatabaseMigrationService<TCon
     {
         var dbContext = factory.CreateDbContext(args);
 
-        var pending = await dbContext.Database
+        var migrations = await dbContext.Database
             .GetPendingMigrationsAsync(cancellationToken)
             .ConfigureAwait(false);
 
         Console.WriteLine($"Pending migrations on {dbContext.GetType().Name} ({dbContext.Database.ProviderName}):");
 
-        foreach (var m in pending)
+        foreach (var migration in migrations)
         {
-            Console.WriteLine($"{m}");
+            Console.WriteLine($"{migration}");
         }
 
         Console.WriteLine("Migrate...");

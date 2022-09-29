@@ -63,8 +63,5 @@ public class ManagerDbContext : DbContext
         modelBuilder
             .Entity<MinerTaskRow>()
             .Property(m => m.CreatedDate);
-        modelBuilder
-            .Entity<MinerTaskRow>()
-            .Property(m => m.LastUpdateDate);
     }
 }

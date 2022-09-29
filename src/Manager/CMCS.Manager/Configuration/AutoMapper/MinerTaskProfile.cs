@@ -1,7 +1,7 @@
 using AutoMapper;
 using CMCS.Manager.Context.Entities;
 using CMCS.Manager.Contract.Models;
-using CMCS.Manager.Contract.Models.Manager;
+using CMCS.Manager.Contract.Models.MinerTask;
 using CMCS.Shared.Core.Models;
 using CMCS.Shared.Extensions.EnumExtensions;
 
@@ -21,7 +21,6 @@ public class MinerTaskProfile : Profile
                             src.Miner.ToEnum<MinerType>(), 
                             src.CryptoCoin.ToEnum<CryptoCoinType>(), 
                             src.Algorithm.ToEnum<AlgorithmType>()),
-                        src.CreatedDate, 
-                        src.LastUpdateDate));
+                        src.CreatedDate));
     }
 }
