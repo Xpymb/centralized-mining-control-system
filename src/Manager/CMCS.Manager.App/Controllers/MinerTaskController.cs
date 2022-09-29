@@ -36,7 +36,7 @@ public class MinerTaskController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(void), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<MinerTask>> Update(
-        [FromQuery] UpdateMinerTaskCommand command,
+        [FromBody] UpdateMinerTaskCommand command,
         CancellationToken token = default)
     {
         var result = await _minerTaskService

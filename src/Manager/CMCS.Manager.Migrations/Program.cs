@@ -1,3 +1,19 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CMCS.Manager.Context;
+using CMCS.Shared.Core.Database;
 
-Console.WriteLine("Hello, World!");
+namespace CMCS.Manager.Migrations;
+
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var cancellationToken = new CancellationToken();
+        var service = new DatabaseMigrationService<ManagerDbContext>();
+
+        await service.Migrate(
+                args,
+                new DesignTimeDbContextFactory(),
+                cancellationToken)
+            .ConfigureAwait(false);
+    }
+}
