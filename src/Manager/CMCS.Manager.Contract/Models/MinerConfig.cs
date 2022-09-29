@@ -1,4 +1,4 @@
-using CMCS.Shared.Models;
+using CMCS.Shared.Core.Models;
 
 namespace CMCS.Manager.Contract.Models;
 

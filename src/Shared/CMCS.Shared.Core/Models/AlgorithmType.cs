@@ -1,4 +1,4 @@
-namespace CMCS.Shared.Models;
+namespace CMCS.Shared.Core.Models;
 
 public enum AlgorithmType
 {

@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\CMCS.Shared.Extensions\CMCS.Shared.Extensions.csproj" />
+      <ProjectReference Include="..\..\Shared\CMCS.Shared.Extensions\CMCS.Shared.Extensions.csproj" />
       <ProjectReference Include="..\..\Shared\Exceptions\CMCS.Shared.Extensions\CMCS.Shared.Extensions.csproj" />
       <ProjectReference Include="..\CMCS.Manager.Contract\CMCS.Manager.Contract.csproj" />
     </ItemGroup>
