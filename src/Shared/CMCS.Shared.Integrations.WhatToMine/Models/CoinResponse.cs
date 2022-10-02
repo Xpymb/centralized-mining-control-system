@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace CMCS.Shared.Integrations.WhatToMine.Models;
 
-public class Coin
+public class CoinResponse
 {
     [JsonPropertyName("id")]
     public int Id { get; init; }
