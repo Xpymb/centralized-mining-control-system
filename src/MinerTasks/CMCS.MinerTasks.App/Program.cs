@@ -1,4 +1,4 @@
-namespace CMCS.Updater.App;
+namespace CMCS.MinerTasks.App;
 
 public class Program
 {

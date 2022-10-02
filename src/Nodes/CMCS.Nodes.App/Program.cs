@@ -1,4 +1,4 @@
-namespace CMCS.Updater.App;
+namespace CMCS.Nodes.App;
 
 public class Program
 {

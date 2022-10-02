@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CMCS.Manager;
+namespace CMCS.Updater;
 
 public static class Registration
 {
