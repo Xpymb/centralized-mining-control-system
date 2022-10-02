@@ -13,17 +13,17 @@ public class WhatToMineClient : IWhatToMineClient
         _client = client;
     }
     
-    public async Task<Coin?> GetCoinInfoAsync(int coinId, CancellationToken token)
+    public async Task<CoinResponse?> GetCoinInfoAsync(int coinId, CancellationToken token)
     {
-        return await HttpClientHelper.GetAsync<Coin>(
+        return await HttpClientHelper.GetAsync<CoinResponse>(
                 _client,
                 new Uri($"/coins/{coinId}.json", UriKind.Relative), token)
             .ConfigureAwait(false);
     }
 
-    public async Task<IEnumerable<Coin>> GetCoinsInfoAsync(IEnumerable<int> coinsId, CancellationToken token)
+    public async Task<IEnumerable<CoinResponse>> GetCoinsInfoAsync(IEnumerable<int> coinsId, CancellationToken token)
     {
-        var result = new List<Coin>();
+        var result = new List<CoinResponse>();
 
         foreach (var coinId in coinsId)
         {
