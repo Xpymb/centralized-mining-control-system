@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using NJsonSchema.Generation;
 
-namespace CMCS.Updater.App;
+namespace CMCS.MinerTasks.App;
 
 public class Startup
 {
@@ -14,11 +14,10 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddManagerDb(Configuration);
+        services.AddDatabase(Configuration);
         services.AddServices();
-        services.AddJobs();
-        
-        services.AddAutoMapper(typeof(Startup).Assembly);
+
+        services.AddAutoMapper();
         
         services
             .AddControllers()
